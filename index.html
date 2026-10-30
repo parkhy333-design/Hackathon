@@ -1,0 +1,422 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'">
+  <title>How to Use · AI 분석</title>
+  <style>:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;color:#14233F;background:#F5F6FA;font-synthesis:none;--blue:#BF1658;--navy:#14233F;--muted:#626B7D;--line:#DDE1E9;--selected:#FCE6EF}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+main{max-width:1240px;margin:28px auto;padding:0 28px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px}
+.page-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px max(28px,calc((100vw - 1184px)/2));background:var(--navy);color:white}
+.page-heading>div{display:flex;align-items:center;gap:12px}
+.brand-mark{width:8px;height:28px;background:var(--blue)}
+h1{font-size:23px;margin:0;font-weight:700;letter-spacing:-.7px}
+.header-label{font-size:13px;color:#C5CDDB;border-left:1px solid #536079;padding-left:14px;margin-left:4px}
+.offline-label{font-size:12px;color:#D2D8E3;white-space:nowrap}
+#release-label{margin-left:8px;color:#AEB9CC;font-size:11px}
+.quick-guide{padding:14px 4px}
+.quick-guide h2{font-size:17px;margin:0 0 25px}
+.quick-guide ol{list-style:none;margin:0;padding:0;counter-reset:steps}
+.quick-guide li{position:relative;counter-increment:steps;padding:0 0 24px 36px}
+.quick-guide li:before{content:counter(steps,decimal-leading-zero);position:absolute;left:0;top:0;color:var(--blue);font-size:13px;font-weight:700}
+.quick-guide h3{font-size:14px;margin:0 0 7px}
+.quick-guide li p,.guide-note,.file-help p{font-size:12px;color:var(--muted);line-height:1.75;margin:0}
+.guide-note{border-top:1px solid var(--line);padding:20px 0}
+.file-help{border-top:1px solid var(--line);padding:14px 0}
+.file-help summary{font-size:12px;font-weight:600;cursor:pointer}
+.file-help p{margin-top:10px}
+.movie{border:1px solid var(--line);background:#fff}
+.movie-top{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.workflow{display:flex;list-style:none;justify-content:space-between;gap:16px;padding:14px 18px;margin:0;border-bottom:1px solid var(--line);font-size:13px;color:#777}
+.workflow li{display:flex;gap:8px;align-items:center}
+.workflow li>span{font-variant-numeric:tabular-nums;font-size:12px}
+.workflow li.active{color:var(--blue);font-weight:600}
+.workflow li.done{color:#444}
+.app-stage{position:relative;margin:18px 18px 0;border:1px solid var(--line);overflow:hidden}
+.app-title{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;background:var(--navy);color:white;border-bottom:1px solid var(--line)}
+.app-title strong{font-size:14px;font-weight:600}
+.app-title>span{font-size:11px;color:#D2D8E3}
+.app-toolbar{display:flex;align-items:center;gap:14px;min-width:0;padding:12px 14px 8px;font-size:12px}
+.app-action{display:inline-block;white-space:nowrap;background:var(--blue);color:#fff;padding:9px 12px;font-size:12px;border-radius:3px}
+#app-filename{min-width:0;overflow-wrap:anywhere;color:var(--muted)}
+.setting-summary{padding:0 14px 10px;font-size:12px;color:var(--muted)}
+.sheet-checklist{display:grid;gap:5px;padding:8px 14px;border-top:1px solid var(--line);font-size:12px;background:#F5F6FA}
+.sheet-checklist>div{display:flex;justify-content:space-between;gap:12px;padding:5px 8px;background:white}
+.sheet-checklist .checked{color:var(--blue);background:var(--selected)}
+.sheet-checklist small{color:var(--muted)}
+.sheet-bar{display:flex;justify-content:space-between;gap:12px;padding:9px 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fafafa;font-size:12px;color:var(--muted)}
+.sheet-view{position:relative;min-height:230px}
+.sheet-view table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px}
+.sheet-view th,.sheet-view td{height:34px;padding:7px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;overflow-wrap:anywhere}
+.sheet-view th:last-child,.sheet-view td:last-child{border-right:0}
+.sheet-view tr:last-child td,.sheet-view tr:last-child th{border-bottom:0}
+.sheet-view thead th{font-size:12px;font-weight:600;background:#EEF0F5}
+.sheet-view .row-id{width:52px;padding:7px 3px;text-align:center;background:#fafafa;color:#777;font-size:11px;font-weight:400}
+.sheet-view .selected{background:var(--selected)}
+.sheet-view th.selected{box-shadow:inset 0 2px var(--blue)}
+.sheet-view .empty{color:#888}
+.sheet-view .token{font-family:ui-monospace,monospace;font-size:11px;color:var(--blue);word-break:break-all}
+.blank-prefix{text-align:center!important;font-size:11px;color:#777;background:#fafafa}
+.empty-state{min-height:230px;display:grid;place-content:center;gap:10px;text-align:center;color:#777}
+.empty-state strong{font-size:14px;font-weight:400}
+.empty-state span{font-size:12px}
+.app-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line);background:#fafafa}
+.app-footer>span:first-child{font-size:12px;color:var(--muted);line-height:1.5}
+.focus-target{outline:2px solid var(--blue);outline-offset:2px}
+.subtitle{display:flex;align-items:flex-start;gap:14px;min-height:88px;padding:17px 18px}
+.subtitle>span{font-size:11px;color:#777;font-variant-numeric:tabular-nums;padding-top:3px;white-space:nowrap}
+.subtitle h2{font-size:16px;font-weight:600;margin:0 0 5px}
+.subtitle p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.player-controls{padding:13px 18px;border-top:1px solid var(--line);background:#fafafa}
+.player-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.control{font:inherit;font-size:12px;line-height:1.5;padding:7px 13px;min-height:34px;background:#fff;color:#333;border:1px solid #bbb;border-radius:3px;cursor:pointer}
+.control.primary{min-width:90px;background:var(--blue);border-color:var(--blue);color:white}.control.primary:hover{background:#9D1047}
+.control:hover{background:#f0f0f0}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.time{font-family:ui-monospace,monospace;font-size:12px;font-variant-numeric:tabular-nums;color:var(--muted);margin-left:4px}
+.play-state{font-size:11px;color:#777;margin-left:auto}
+.seek-label{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);margin:11px 0 3px}
+input[type=range]{display:block;width:100%;margin:0;min-height:22px;accent-color:var(--blue);cursor:pointer}
+.disclosure{grid-column:2;font-size:11px;line-height:1.6;color:var(--muted);margin-top:-10px}
+.disclosure p{margin:0 0 5px}
+.disclosure summary{display:inline-block;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.disclosure details p{max-width:760px;margin-top:7px}
+.demo-dialog{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%);width:370px;max-width:calc(100% - 28px);padding:18px;background:#fff;border:1px solid #aaa;box-shadow:0 6px 24px #14233F24}
+.demo-dialog h3{font-size:14px;margin:0 0 14px}
+.demo-dialog p{font-size:12px;line-height:1.6;color:var(--muted);margin:10px 0}
+.dialog-file{padding:10px;background:#f3f3f3;font-size:12px;overflow-wrap:anywhere}
+.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}
+.dialog-actions span{padding:7px 13px;border:1px solid #ccc;border-radius:3px;color:#555;font-size:12px}
+.dialog-actions .confirm{background:var(--blue);border-color:var(--blue);color:#fff}
+.demo-pointer{position:absolute;z-index:5;left:0;top:0;pointer-events:none;transition:transform .5s ease}
+.demo-pointer svg{fill:#222;stroke:#fff;stroke-width:1.7}
+.demo-pointer>span{position:absolute;bottom:calc(100% + 3px);left:12px;padding:3px 6px;white-space:nowrap;background:#333;color:#fff;border-radius:2px;font-size:10px}
+.scanning:after{content:"";position:absolute;inset:0;pointer-events:none;border-top:2px solid var(--blue);animation:scan-pass 3.5s ease-out 1}
+.paused .scanning:after{animation-play-state:paused}
+.qa-note{padding:10px 13px;background:#F1F3F8;color:var(--navy);font-size:12px;line-height:1.6}
+.qa-progress{height:3px;background:#eee;overflow:hidden}
+.qa-progress>span{display:block;width:100%;height:100%;background:var(--blue);transform-origin:left;transform:scaleX(var(--qa-fraction,0))}
+.saved-label{color:var(--navy)!important}
+.reduced-motion .demo-pointer{display:none}
+.reduced-motion *{animation:none!important;transition:none!important}
+@keyframes scan-pass{from{transform:translateY(0)}to{transform:translateY(98%)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.demo-pointer{display:none}}
+@media(max-height:850px){main{padding-top:14px}.page-heading{margin-bottom:10px}h1{font-size:20px}.workflow{padding-top:10px;padding-bottom:10px}.app-stage{margin-top:12px}.sheet-view,.empty-state{min-height:174px}.sheet-view th,.sheet-view td{height:25px;padding-top:4px;padding-bottom:4px}.subtitle{min-height:74px;padding-top:12px;padding-bottom:12px}.app-toolbar{padding-top:9px}.app-action{padding-top:7px;padding-bottom:7px}.app-footer{padding-top:9px;padding-bottom:9px}.player-controls{padding-top:10px;padding-bottom:10px}}
+@media(max-width:650px){main{padding:15px 12px}.page-heading{gap:10px}h1{font-size:19px}.movie-top{padding:10px 12px}.workflow{gap:16px;padding:12px;font-size:12px}.workflow li{gap:5px;align-items:flex-start}.app-stage{margin-left:10px;margin-right:10px}.app-title,.app-footer{padding-left:10px;padding-right:10px}.app-toolbar{padding-left:10px;padding-right:10px;gap:10px;flex-wrap:wrap}.setting-summary{padding-left:10px;padding-right:10px}.sheet-bar{padding:8px 10px;flex-wrap:wrap;font-size:11px}.sheet-view th,.sheet-view td{font-size:11px;padding-left:6px;padding-right:6px}.sheet-view .row-id{width:38px;font-size:10px}.sheet-view .token{font-size:10px}.subtitle{padding-left:12px;padding-right:12px;gap:10px;min-height:85px}.subtitle h2{font-size:15px}.app-footer{flex-wrap:wrap}.app-footer>span:first-child{font-size:11px}.player-controls{padding-left:12px;padding-right:12px}.time{font-size:11px}.demo-dialog{padding:15px}.play-state{margin-left:0}}
+@media(pointer:coarse){.control{min-height:44px}input[type=range]{min-height:36px}}
+
+@media(max-width:900px){main{grid-template-columns:1fr;margin:20px auto;max-width:760px;padding:0 18px;gap:20px}.quick-guide{padding:0}.quick-guide h2{margin-bottom:18px}.quick-guide ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.quick-guide li{padding-bottom:0}.guide-note{margin-top:18px;padding:14px 0}.disclosure{grid-column:1}.page-heading{padding:18px}.file-help{padding:10px 0}}
+@media(max-width:520px){.quick-guide ol{grid-template-columns:1fr;gap:16px}.quick-guide li{padding-left:32px}.header-label{display:none}.offline-label{font-size:11px}h1{font-size:19px}.workflow{gap:8px}.page-heading{padding:16px}.disclosure{font-size:11px}.quick-guide h2{font-size:16px}}
+.workflow li{flex:1}
+.token-text{font-family:ui-monospace,monospace;font-size:11px;color:#BF1658;background:#FCE6EF}
+.pane{padding:12px 14px;font-size:12px;line-height:1.7}
+.pane h4{margin:0 0 8px;font-size:13px}
+.file-list{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.file-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border:1px solid var(--line);background:#fff}
+.file-list .ai{border-color:#BF1658;background:#FCE6EF;font-weight:600}
+.file-list small{color:var(--muted);font-weight:400}
+.local-box{margin-top:12px;padding:10px;border:1px dashed #536079;background:#F1F3F8}
+.local-box code{font-family:ui-monospace,monospace;font-size:11px;overflow-wrap:anywhere}
+.md-preview{margin:0;max-height:300px;overflow:auto;padding:12px 14px;background:#14233F;color:#E8ECF4;font:11px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.check-list{display:grid;gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.check-list li:before{content:"✓ ";color:#1C7C54;font-weight:700}
+.chat{display:grid;gap:10px}
+.bubble{padding:10px 12px;border:1px solid var(--line);max-width:92%}
+.bubble.user{justify-self:end;background:#F1F3F8}
+.bubble.ai{justify-self:start;background:#fff}
+.attach{display:inline-block;margin-bottom:6px;padding:3px 8px;background:#BF1658;color:#fff;font-size:11px}
+.bubble pre{margin:6px 0 0;font:11px/1.55 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.match-result td,.match-result th{font-size:11px}
+.match-result .origin{font-weight:600}
+@media (max-width:760px){.workflow{flex-wrap:wrap}.workflow li{flex:1 1 45%}}
+.focus-layer{position:absolute;inset:0;pointer-events:none;z-index:5}
+.focus-box{position:absolute;border:3px solid #E0192D;border-radius:4px;box-shadow:0 0 0 3px rgba(224,25,45,.18);animation:focus-in .28s ease-out both}
+.focus-tag{position:absolute;left:-3px;bottom:100%;margin-bottom:3px;padding:2px 8px;background:#E0192D;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;border-radius:3px 3px 3px 0}
+.focus-tag.below{bottom:auto;top:100%;margin:3px 0 0}
+@keyframes focus-in{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.focus-box{animation:none}}
+.step-controls{display:flex;align-items:center;gap:10px;padding:14px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.step-controls .control:disabled{opacity:.35;cursor:default}
+.step-dots{display:flex;gap:6px;flex:1;justify-content:center}
+.step-dots .dot{width:10px;height:10px;padding:0;border:1px solid #9AA3B5;border-radius:50%;background:#fff;cursor:pointer}
+.step-dots .dot.active{background:#E0192D;border-color:#E0192D}
+.key-hint{font-size:11px;color:var(--muted)}
+.app-stage{min-height:520px}
+.key-point{margin:0 0 4px;padding:12px;border-left:4px solid #E0192D;background:#FFF1F2}
+.key-point strong{display:block;font-size:13px;color:#B0122A}
+.key-point p{margin:3px 0 10px;font-size:12px;line-height:1.65;color:#14233F}
+.key-point p:last-child{margin-bottom:0}
+.note-line{margin:8px 0 0;color:var(--muted)}
+.sub-head{margin-top:14px!important}
+.same-token td{background:#FFF1F2}
+/* Presentation size: larger text and a taller stage so a projector audience can read it. */
+#ai-flow-demo{max-width:1440px;grid-template-columns:300px minmax(0,1fr)}
+#ai-flow-demo .quick-guide h2{font-size:22px}
+#ai-flow-demo .quick-guide h3{font-size:17px}
+#ai-flow-demo .quick-guide li p,#ai-flow-demo .guide-note,#ai-flow-demo .file-help p,#ai-flow-demo .key-point p{font-size:15px;line-height:1.7}
+#ai-flow-demo .key-point strong{font-size:16px}
+#ai-flow-demo .movie-top,#ai-flow-demo .workflow{font-size:15px}
+#ai-flow-demo .app-title strong{font-size:17px}
+#ai-flow-demo .app-toolbar,#ai-flow-demo .setting-summary,#ai-flow-demo .sheet-checklist,#ai-flow-demo .sheet-bar,#ai-flow-demo .app-footer{font-size:15px}
+#ai-flow-demo .app-action{font-size:15px;padding:10px 14px}
+#ai-flow-demo .app-stage{min-height:680px}
+#ai-flow-demo .sheet-view{min-height:440px}
+#ai-flow-demo .sheet-view table,#ai-flow-demo .sheet-view thead th{font-size:15px}
+#ai-flow-demo .sheet-view th,#ai-flow-demo .sheet-view td{height:42px}
+#ai-flow-demo .sheet-view .token,#ai-flow-demo .token-text{font-size:14px}
+#ai-flow-demo .pane{font-size:15px;line-height:1.75;padding:16px 18px}
+#ai-flow-demo .pane h4{font-size:17px;margin-bottom:10px}
+#ai-flow-demo .match-table td,#ai-flow-demo .match-table th{font-size:15px;padding:9px 8px}
+#ai-flow-demo .md-preview{max-height:none;font-size:14px;line-height:1.6}
+#ai-flow-demo .bubble pre{font-size:14px}
+#ai-flow-demo .attach{font-size:14px}
+#ai-flow-demo .demo-dialog{width:480px;font-size:15px}
+#ai-flow-demo .demo-dialog h3{font-size:19px}
+#ai-flow-demo .subtitle h2{font-size:24px}
+#ai-flow-demo .subtitle p{font-size:17px;line-height:1.6}
+#ai-flow-demo #scene-number{font-size:15px}
+#ai-flow-demo .step-controls .control{font-size:16px;padding:10px 18px}
+#ai-flow-demo .step-dots .dot{width:13px;height:13px}
+#ai-flow-demo .key-hint{font-size:14px}
+#ai-flow-demo .focus-tag{font-size:15px;padding:3px 10px}
+.disclosure{font-size:14px}
+@media (max-width:1100px){#ai-flow-demo{grid-template-columns:1fr}}
+#ai-flow-demo .pane h4+.match-table,#ai-flow-demo .pane h4+table{margin-top:34px}
+.purpose{max-width:1440px;margin:28px auto 0;padding:26px 28px;background:#fff;border:1px solid var(--line);border-top:5px solid #E0192D}
+.purpose-eyebrow{margin:0 0 6px;font-size:15px;font-weight:700;color:#B0122A;letter-spacing:.5px}
+.purpose h2{margin:0 0 12px;font-size:27px;line-height:1.35;letter-spacing:-.6px}
+.purpose-lead{margin:0 0 20px;font-size:17px;line-height:1.75;color:#14233F;max-width:1100px}
+.purpose-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.purpose-grid>div{padding:16px 18px;background:#F5F6FA;border-left:4px solid #14233F}
+.purpose-grid h3{margin:0 0 8px;font-size:18px}
+.purpose-grid p{margin:0;font-size:15px;line-height:1.75;color:#3A4560}
+@media (max-width:900px){.purpose{margin:16px;padding:20px}.purpose-grid{grid-template-columns:1fr}.purpose h2{font-size:22px}}
+.md-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 18px;font-size:15px;color:var(--muted)}
+.side-download{margin:14px 0 4px}
+.side-download .control{width:100%;font-size:15px;padding:10px 12px}
+.side-download p{margin:8px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
+</style>
+</head>
+<body>
+  <header class="page-heading"><div><span class="brand-mark" aria-hidden="true"></span><h1>엑셀 가명처리</h1><span class="header-label">How to Use · AI 분석</span></div><span class="offline-label">오프라인 <span id="release-label"></span></span></header><section class="purpose" aria-labelledby="purpose-title">
+  <p class="purpose-eyebrow">사용 목적</p>
+  <h2 id="purpose-title">고객정보를 AI 전용 난수로 바꿔, 원문 없이 AI로 통계·분석합니다</h2>
+  <p class="purpose-lead">실제 원장·CRM·고객 데이터를 AI로 분석하고 싶어도 고객정보를 AI에 그대로 넣을 수는 없습니다. 이 도구는 고객번호·계좌번호·이름을 이번 작업에서만 쓰는 난수로 바꿔 AI에 넘기고, AI가 돌려준 결과는 오프라인에서만 원래 고객과 다시 연결합니다.</p>
+  <div class="purpose-grid">
+    <div><h3>무엇을 하나</h3><p>원장·CRM·고객 엑셀의 식별정보만 난수로 바꿉니다. 금액·날짜·종목 같은 분석 값은 남기므로 AI가 고객별 건수·합계·추이 같은 통계를 그대로 계산합니다.</p></div>
+    <div><h3>어떻게 지키나</h3><p>실행할 때마다 새로 뽑는 1회성 난수라 AI가 여러 번 받은 자료를 이어 붙여 학습하거나 추적할 수 없습니다. 원래값과 난수의 대응표는 공유 폴더 밖, 오프라인에만 둡니다.</p></div>
+    <div><h3>어디에 쓰나</h3><p>AI로 고객 통계·분석을 낼 때, 그리고 오프라인 망에서 돌릴 사내 분석 툴을 만들 때 실제와 같은 구조의 데이터로 개발·검증할 때 씁니다.</p></div>
+  </div>
+</section>
+  <main id="ai-flow-demo">
+    <aside class="quick-guide" aria-label="처음 사용하기">
+      <h2>How to Use</h2>
+      <ol id="quick-guide"><li><h3>가명처리 저장</h3><p>시트별로 고객번호·이름·계좌번호를 체크하고 ‘원본 양식 + AI 자료 저장’을 누릅니다. 원래값·난수 대응표 엑셀은 공유 폴더 밖에 따로 저장됩니다.</p></li><li><h3>AI에는 Markdown만</h3><p>결과 폴더의 AI_분석자료.md만 AI에 넣습니다. 치환본·.opmap·키는 넣지 않습니다.</p></li><li><h3>답변 저장</h3><p>AI가 가명값을 그대로 둔 JSON으로 답하게 하고, 답변을 .json·.txt로 저장합니다.</p></li><li><h3>AI 결과 매칭</h3><p>저장 때 만든 .opmap(이 PC) 또는 대응표 엑셀(다른 오프라인 PC)과 답변 파일을 고르면 원래 고객번호와 연결된 새 XLSX가 나옵니다.</p></li></ol>
+      <div class="key-point"><strong>1회성 난수</strong><p>실행할 때마다 패턴 없는 새 난수로 바뀝니다. AI가 여러 번 받은 자료를 이어 붙여 학습할 수 없습니다.</p><strong>실행 안의 규칙</strong><p>한 번 돌린 결과 안에서는 같은 고객번호·계좌번호가 같은 값입니다. 고객별 건수·합계 같은 계산은 그대로 됩니다.</p></div><div class="side-download"><button type="button" class="control primary" id="md-download-side">⬇ 시연 Markdown 내려받기</button><p>이 시연에서 만든 AI_분석자료.md입니다. AI에 첨부해 고객별 통계를 요청해 보세요.</p></div><p class="guide-note">설치 없이 EXE를 실행하세요.<br>인터넷 연결은 필요 없습니다.</p>
+      <details class="file-help"><summary>읽을 수 있는 파일</summary><p>XLSX · XLSM · XLTX · XLTM<br>CSV · TSV · TXT</p><p>선택한 시트만 읽습니다. 공백·병합된 열 제목은 그대로 두고, 여러 표·숨김·세로 병합이 있으면 사용할 범위를 선택하세요.</p><p>XLS·ODS·암호 파일은 XLSX 사본으로 저장해 주세요. 수식은 저장된 계산 결과를 읽습니다.</p></details>
+      <details class="file-help"><summary>처리가 안 될 때</summary><p>화면의 위치·원인·해결 방법을 확인하세요. 다른 시트를 선택해서 계속할 수 있습니다.</p><p>중단된 저장은 다음 실행 때 정리합니다. 취소하면 정지가 끝난 뒤 다음 파일을 여세요. 확인이 필요한 파일은 보존하며, 새 파일명으로 저장할 수 있습니다.</p></details>
+    </aside>
+    <section class="movie" aria-label="가상 엑셀의 AI 분석 흐름 시연">
+      <div class="movie-top"><strong>사용 과정 보기</strong><span>가상 파일 · 가상 AI 답변 · 14단계</span></div>
+      <ol class="workflow" aria-label="프로그램 사용 순서"><li id="flow-1"><span>01</span> 가명처리 저장</li><li id="flow-2"><span>02</span> AI에 Markdown</li><li id="flow-3"><span>03</span> 답변 저장</li><li id="flow-4"><span>04</span> 로컬 매칭</li></ol>
+      <div class="app-stage" id="app-stage">
+        <div class="app-title"><strong>엑셀 가명처리</strong><span>오프라인</span></div>
+        <div class="app-toolbar"><span class="app-action" id="app-file">① 파일 선택</span><span id="app-filename">원본 파일을 선택하세요</span></div>
+        <div class="setting-summary">체크한 시트·열만 난수화 · 나머지는 원본 유지</div>
+        <div id="sheet-checklist" class="sheet-checklist" aria-label="원본 순서의 시트 목록"></div>
+        <div class="sheet-bar"><span id="sheet-name">원본 표</span><span id="table-range">파일 선택 전</span></div>
+        <div id="sheet-view" class="sheet-view"></div>
+        <div class="app-footer"><span id="app-status">원본은 바뀌지 않습니다.</span><span class="app-action" id="app-save">체크한 시트 한 파일로 저장</span></div>
+        <div class="demo-dialog" id="demo-dialog" hidden></div>
+        <div id="demo-pointer" class="demo-pointer" aria-hidden="true"><svg viewBox="0 0 25 31" width="25" height="31"><path d="M2 2 3 25 9 19 14 29 19 26 14 17 23 16Z"/></svg><span id="pointer-caption"></span></div>
+      </div>
+      <div class="subtitle" aria-live="polite" aria-atomic="true"><span id="scene-number">01 / 10</span><div><h2 id="scene-title">파일 선택</h2><p id="scene-caption">원본 엑셀을 선택합니다.</p></div></div>
+      <nav class="step-controls" aria-label="단계 이동">
+        <button type="button" class="control" id="step-prev">◀ 이전</button>
+        <div class="step-dots" id="step-dots"></div>
+        <button type="button" class="control primary" id="step-next">다음 ▶</button>
+        <span class="key-hint">← → 키로도 넘길 수 있습니다</span>
+      </nav>
+    </section>
+    <footer class="disclosure">가상 파일을 실제 처리 엔진으로 가명처리·매칭한 기록을 재생합니다. AI 답변은 가상 예시이며, 이 화면은 AI를 호출하거나 파일을 처리하지 않습니다.</footer>
+    <noscript>시연을 보려면 JavaScript를 허용하세요. 왼쪽 사용법은 EXE의 처리 순서입니다.</noscript>
+  </main>
+  <script id="replay-data" type="application/json">{"markdown_tables": [{"headers": ["고객번호", "고객명"], "rows": [["C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "N_821C122555EC96DC2DE318DDBBBBF28F98D6D9D342226EA4DBAEAFA1E7AB4AA3"], ["C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "N_E78FB803C48FBF34DF2FEABFE73B983634C68B02566273FA6735B3E6B9C139EC"], ["C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "N_00E2795FFBDDF447EED2B5DE80D0968A5FF8C96DCEF141817FB95CE03B827AFC"]]}, {"headers": ["거래일", "고객번호", "계좌번호", "거래금액"], "rows": [["2026-10-21", "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "125000"], ["2026-10-22", "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60", "50000"], ["2026-10-23", "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "75000"], ["2026-10-24", "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7", "97500"]]}, {"headers": ["고객번호", "계좌번호", "종목", "평가금액"], "rows": [["C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "CAT_532A2B2CDDC65F41A16BAB8470196947", "250000"], ["C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60", "CAT_975F9229693223853CCBB2C0F5D2DE84", "100000"], ["C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7", "CAT_C0A0DADCBB2703DBAA2BDE608866DD16", "195000"]]}], "status": "PASS", "synthetic_only": true, "synthetic_reply": true, "filename": "고객정보_거래내역_잔고.xlsx", "sheets": [{"name": "고객정보", "top": 6, "left": 3, "letters": ["C", "D", "E"], "selected": [{"column": "C", "index": 3, "header": "고객번호", "kind": "customer"}, {"column": "D", "index": 4, "header": "고객명", "kind": "name"}], "range": "C6:E10", "before": [{"row": 6, "cells": [{"address": "C6", "column": 3, "value": "고객정보", "span": 3, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 7, "cells": [{"address": "C7", "column": 3, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D7", "column": 4, "value": "고객명", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E7", "column": 5, "value": "지역", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 8, "cells": [{"address": "C8", "column": 3, "value": "20231458", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D8", "column": 4, "value": "이서", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E8", "column": 5, "value": "서울", "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 9, "cells": [{"address": "C9", "column": 3, "value": "01987342", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D9", "column": 4, "value": "김민준", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E9", "column": 5, "value": "부산", "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 10, "cells": [{"address": "C10", "column": 3, "value": "30560019", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D10", "column": 4, "value": "남궁민수", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E10", "column": 5, "value": "대전", "span": 1, "background": "F4F6FA", "color": "14233F"}]}], "after": [{"row": 6, "cells": [{"address": "C6", "column": 3, "value": "고객정보", "span": 3, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 7, "cells": [{"address": "C7", "column": 3, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D7", "column": 4, "value": "고객명", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E7", "column": 5, "value": "지역", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 8, "cells": [{"address": "C8", "column": 3, "value": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D8", "column": 4, "value": "N_821C122555EC96DC2DE318DDBBBBF28F98D6D9D342226EA4DBAEAFA1E7AB4AA3", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E8", "column": 5, "value": "서울", "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 9, "cells": [{"address": "C9", "column": 3, "value": "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D9", "column": 4, "value": "N_E78FB803C48FBF34DF2FEABFE73B983634C68B02566273FA6735B3E6B9C139EC", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E9", "column": 5, "value": "부산", "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 10, "cells": [{"address": "C10", "column": 3, "value": "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D10", "column": 4, "value": "N_00E2795FFBDDF447EED2B5DE80D0968A5FF8C96DCEF141817FB95CE03B827AFC", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E10", "column": 5, "value": "대전", "span": 1, "background": "F4F6FA", "color": "14233F"}]}]}, {"name": "거래내역", "top": 41, "left": 3, "letters": ["C", "D", "E", "F"], "selected": [{"column": "D", "index": 4, "header": "고객번호", "kind": "customer"}, {"column": "E", "index": 5, "header": "계좌번호", "kind": "account"}], "range": "C41:F46", "before": [{"row": 41, "cells": [{"address": "C41", "column": 3, "value": "거래내역", "span": 4, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 42, "cells": [{"address": "C42", "column": 3, "value": "거래일", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D42", "column": 4, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E42", "column": 5, "value": "계좌번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "F42", "column": 6, "value": "거래금액", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 43, "cells": [{"address": "C43", "column": 3, "value": "2026-10-21", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D43", "column": 4, "value": "20231458", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E43", "column": 5, "value": "3021-4417", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "F43", "column": 6, "value": 125000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 44, "cells": [{"address": "C44", "column": 3, "value": "2026-10-22", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D44", "column": 4, "value": "01987342", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E44", "column": 5, "value": "1102-8835", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "F44", "column": 6, "value": 50000, "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 45, "cells": [{"address": "C45", "column": 3, "value": "2026-10-23", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D45", "column": 4, "value": "20231458", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E45", "column": 5, "value": "3021-4417", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "F45", "column": 6, "value": 75000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 46, "cells": [{"address": "C46", "column": 3, "value": "2026-10-24", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D46", "column": 4, "value": "30560019", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E46", "column": 5, "value": "5540-2096", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "F46", "column": 6, "value": 97500, "span": 1, "background": "F4F6FA", "color": "14233F"}]}], "after": [{"row": 41, "cells": [{"address": "C41", "column": 3, "value": "거래내역", "span": 4, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 42, "cells": [{"address": "C42", "column": 3, "value": "거래일", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D42", "column": 4, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E42", "column": 5, "value": "계좌번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "F42", "column": 6, "value": "거래금액", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 43, "cells": [{"address": "C43", "column": 3, "value": "2026-10-21", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D43", "column": 4, "value": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E43", "column": 5, "value": "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "F43", "column": 6, "value": 125000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 44, "cells": [{"address": "C44", "column": 3, "value": "2026-10-22", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D44", "column": 4, "value": "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E44", "column": 5, "value": "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "F44", "column": 6, "value": 50000, "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 45, "cells": [{"address": "C45", "column": 3, "value": "2026-10-23", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D45", "column": 4, "value": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E45", "column": 5, "value": "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "F45", "column": 6, "value": 75000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 46, "cells": [{"address": "C46", "column": 3, "value": "2026-10-24", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D46", "column": 4, "value": "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E46", "column": 5, "value": "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "F46", "column": 6, "value": 97500, "span": 1, "background": "F4F6FA", "color": "14233F"}]}]}, {"name": "잔고", "top": 3, "left": 2, "letters": ["B", "C", "D", "E"], "selected": [{"column": "B", "index": 2, "header": "고객번호", "kind": "customer"}, {"column": "C", "index": 3, "header": "계좌번호", "kind": "account"}], "range": "B3:E7", "before": [{"row": 3, "cells": [{"address": "B3", "column": 2, "value": "가상 보유내역", "span": 4, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 4, "cells": [{"address": "B4", "column": 2, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "C4", "column": 3, "value": "계좌번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D4", "column": 4, "value": "종목", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E4", "column": 5, "value": "평가금액", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 5, "cells": [{"address": "B5", "column": 2, "value": "20231458", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "C5", "column": 3, "value": "3021-4417", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D5", "column": 4, "value": "삼성전자", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E5", "column": 5, "value": 250000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 6, "cells": [{"address": "B6", "column": 2, "value": "01987342", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "C6", "column": 3, "value": "1102-8835", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D6", "column": 4, "value": "카카오", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E6", "column": 5, "value": 100000, "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 7, "cells": [{"address": "B7", "column": 2, "value": "30560019", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "C7", "column": 3, "value": "5540-2096", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D7", "column": 4, "value": "KODEX 200", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E7", "column": 5, "value": 195000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}], "after": [{"row": 3, "cells": [{"address": "B3", "column": 2, "value": "가상 보유내역", "span": 4, "background": "BF1658", "color": "FFFFFF"}]}, {"row": 4, "cells": [{"address": "B4", "column": 2, "value": "고객번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "C4", "column": 3, "value": "계좌번호", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "D4", "column": 4, "value": "종목", "span": 1, "background": "14233F", "color": "FFFFFF"}, {"address": "E4", "column": 5, "value": "평가금액", "span": 1, "background": "14233F", "color": "FFFFFF"}]}, {"row": 5, "cells": [{"address": "B5", "column": 2, "value": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "C5", "column": 3, "value": "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D5", "column": 4, "value": "삼성전자", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E5", "column": 5, "value": 250000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}, {"row": 6, "cells": [{"address": "B6", "column": 2, "value": "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "C6", "column": 3, "value": "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "D6", "column": 4, "value": "카카오", "span": 1, "background": "F4F6FA", "color": "14233F"}, {"address": "E6", "column": 5, "value": 100000, "span": 1, "background": "F4F6FA", "color": "14233F"}]}, {"row": 7, "cells": [{"address": "B7", "column": 2, "value": "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "C7", "column": 3, "value": "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "D7", "column": 4, "value": "KODEX 200", "span": 1, "background": "FFFFFF", "color": "14233F"}, {"address": "E7", "column": 5, "value": 195000, "span": 1, "background": "FFFFFF", "color": "14233F"}]}]}], "markdown": "# 분석 자료\n\n같은 유형의 동일 가명값으로 표를 연결하세요. 이름은 동명이인을 구분하지 못합니다.\nCAT_ 코드는 같은 원문 범주를 뜻합니다. 코드를 바꾸거나 원문을 추측하지 마세요.\n분석 결과는 고객 가명번호를 유지한 JSON 배열 [{\"가명값\":\"토큰\",\"분석결과\":\"내용\"}]로 반환하세요.\n\n## 표 1\n\n| 고객번호 | 고객명 |\n| --- | --- |\n| C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC | N_821C122555EC96DC2DE318DDBBBBF28F98D6D9D342226EA4DBAEAFA1E7AB4AA3 |\n| C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B | N_E78FB803C48FBF34DF2FEABFE73B983634C68B02566273FA6735B3E6B9C139EC |\n| C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509 | N_00E2795FFBDDF447EED2B5DE80D0968A5FF8C96DCEF141817FB95CE03B827AFC |\n\n## 표 2\n\n| 거래일 | 고객번호 | 계좌번호 | 거래금액 |\n| --- | --- | --- | --- |\n| 2026-10-21 | C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC | A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B | 125000 |\n| 2026-10-22 | C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B | A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60 | 50000 |\n| 2026-10-23 | C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC | A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B | 75000 |\n| 2026-10-24 | C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509 | A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7 | 97500 |\n\n## 표 3\n\n| 고객번호 | 계좌번호 | 종목 | 평가금액 |\n| --- | --- | --- | --- |\n| C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC | A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B | CAT_532A2B2CDDC65F41A16BAB8470196947 | 250000 |\n| C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B | A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60 | CAT_975F9229693223853CCBB2C0F5D2DE84 | 100000 |\n| C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509 | A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7 | CAT_C0A0DADCBB2703DBAA2BDE608866DD16 | 195000 |\n\n", "runs": [{"유형": "account", "원래값": "1102-8835", "first": "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60", "second": "A_94A7B9655F83B3C97806C41517F889E49B2168F7F4239C6EE998A1703E529D1F"}, {"유형": "account", "원래값": "3021-4417", "first": "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B", "second": "A_25A223BEEF7AD967FDC5CDFAB1643E3553D00DD2E2A5E4CE47C6971F4D31AFF0"}, {"유형": "account", "원래값": "5540-2096", "first": "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7", "second": "A_F2CA80341F25586F7BDAC1C64EBE845B8A0C0925E2169CD0775181F793BDDFEE"}, {"유형": "customer", "원래값": "01987342", "first": "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "second": "C_93056820372D0BD5B85814CA2FCD59FD8633CEBAE5F76CB99807C90310020C41"}, {"유형": "customer", "원래값": "20231458", "first": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "second": "C_28C2A0E6A40ED4AF885676FF29AD20056E1607E27D83F8C2F06D82592CC64072"}, {"유형": "customer", "원래값": "30560019", "first": "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "second": "C_486F45FB0F371844CD673CBC6E3285179D68DBE8321EC2155DE713677A12A8B7"}], "table_rows": [["account", "1102-8835", "A_F48350A77DD07638D81419A19E2133C152A8C8A800B5E6A2F405521C5D017E60"], ["account", "3021-4417", "A_DBD3C77C2DCD8B58D62F6C86521A88961184FBCA9256377AA6483B45EE25406B"], ["account", "5540-2096", "A_F35AA2F6A8576E219C2C112D8B444F9492DB519C47D08B827E8ED7408D422CF7"], ["category", "KODEX 200", "CAT_C0A0DADCBB2703DBAA2BDE608866DD16"], ["category", "삼성전자", "CAT_532A2B2CDDC65F41A16BAB8470196947"], ["category", "카카오", "CAT_975F9229693223853CCBB2C0F5D2DE84"], ["customer", "01987342", "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B"], ["customer", "20231458", "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC"], ["customer", "30560019", "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509"], ["name", "김민준", "N_E78FB803C48FBF34DF2FEABFE73B983634C68B02566273FA6735B3E6B9C139EC"], ["name", "남궁민수", "N_00E2795FFBDDF447EED2B5DE80D0968A5FF8C96DCEF141817FB95CE03B827AFC"], ["name", "이서", "N_821C122555EC96DC2DE318DDBBBBF28F98D6D9D342226EA4DBAEAFA1E7AB4AA3"]], "stats": [{"token": "C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "count": 2, "total": 200000}, {"token": "C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "count": 1, "total": 50000}, {"token": "C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "count": 1, "total": 97500}], "markdown_bytes": 2248, "reply": "분석 결과입니다. 고객 가명값은 바꾸지 않았습니다.\n\n```json\n[\n {\n  \"가명값\": \"C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC\",\n  \"분석결과\": \"거래 2건 · 합계 200,000원 · 보유 CAT_532A2B2CDDC65F41A16BAB8470196947 250,000원\"\n },\n {\n  \"가명값\": \"C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B\",\n  \"분석결과\": \"거래 1건 · 합계 50,000원 · 보유 CAT_975F9229693223853CCBB2C0F5D2DE84 100,000원\"\n },\n {\n  \"가명값\": \"C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509\",\n  \"분석결과\": \"거래 1건 · 합계 97,500원 · 보유 CAT_C0A0DADCBB2703DBAA2BDE608866DD16 195,000원\"\n }\n]\n```\n", "matched": [["C_FDA8B3410BBC2FAF9526160BC4E967DE99F542C05106D4E457282A13A6A324BC", "customer", "20231458", "거래 2건 · 합계 200,000원 · 보유 삼성전자 250,000원"], ["C_72C80E24F98FBD1EF8DD08FB9FAE6CBDD6810EC4F4E419483A3C4E809A9EF41B", "customer", "01987342", "거래 1건 · 합계 50,000원 · 보유 카카오 100,000원"], ["C_6C88593E318F16C60D52C35640992D285B18315870833AA545431DFAB4BEC509", "customer", "30560019", "거래 1건 · 합계 97,500원 · 보유 KODEX 200 195,000원"]], "summary": {"rows": 3, "missing_customers": 0, "duplicate_rows": 0}, "categories": 3, "changed_cells": 20, "saved_file_validation": "PASS", "markdown_original_values": 0, "network_attempts": 0, "source_unchanged": true, "package_files": ["가명처리_원본양식.xlsx", "AI_분석자료.md", "가명처리_검증보고서.json", "manifest.json"], "local_files": ["\u003c작업번호>.opmap", "\u003c작업번호>_대응표.xlsx"], "method": "CSPRNG", "scope": "FILE_LOCAL", "guide": [{"title": "가명처리 저장", "text": "시트별로 고객번호·이름·계좌번호를 체크하고 ‘원본 양식 + AI 자료 저장’을 누릅니다. 원래값·난수 대응표 엑셀은 공유 폴더 밖에 따로 저장됩니다."}, {"title": "AI에는 Markdown만", "text": "결과 폴더의 AI_분석자료.md만 AI에 넣습니다. 치환본·.opmap·키는 넣지 않습니다."}, {"title": "답변 저장", "text": "AI가 가명값을 그대로 둔 JSON으로 답하게 하고, 답변을 .json·.txt로 저장합니다."}, {"title": "AI 결과 매칭", "text": "저장 때 만든 .opmap(이 PC) 또는 대응표 엑셀(다른 오프라인 PC)과 답변 파일을 고르면 원래 고객번호와 연결된 새 XLSX가 나옵니다."}], "release": "0.999"}</script>
+  <script>"use strict";
+(() => {
+  const $=id=>document.getElementById(id), root=$("ai-flow-demo");
+  if(!root)return;
+  const data=JSON.parse($("replay-data").textContent);
+  if(data.status!=="PASS" || !data.synthetic_only || data.saved_file_validation!=="PASS" || data.markdown_original_values!==0 || data.summary.missing_customers!==0){
+    $("scene-title").textContent="시연 검증 실패";return;
+  }
+  // [title, caption, workflow step, [[selector, label], ...]] — boxes mark only what changed on this step.
+  const scenes=[
+    ["가상 엑셀 선택","고객정보·거래내역·잔고가 한 파일에 있습니다. 실제 고객 자료는 쓰지 않습니다.",1,[["#app-filename","가상 엑셀 3시트"]]],
+    ["고객정보 열 선택","고객번호·고객명을 체크합니다. 지역은 AI 자료에 넣지 않습니다.",1,[[".sheet-view .pick","바꿀 열 체크"]]],
+    ["거래내역·잔고 열 선택","고객번호·계좌번호를 체크합니다. 거래일·금액·종목은 분석용으로 둡니다.",1,[[".sheet-view .pick","바꿀 열 체크"],["#sheet-checklist","세 시트 모두 체크"]]],
+    ["원본 양식 + AI 자료 저장","이 버튼 하나로 치환본과 AI 자료가 같은 난수로 함께 만들어집니다.",1,[["#app-save","이 버튼"],[".sheet-view .token","원문 → 난수"]]],
+    ["결과 폴더 확인","AI에 넣을 파일은 AI_분석자료.md 하나입니다. 대응 자료는 공유 폴더 밖에 따로 저장됩니다.",1,[[".file-list .ai","AI에 넣는 파일"],[".local-box","AI에 넣지 않음"]]],
+    ["대응표 엑셀","원래값과 난수가 함께 저장된 엑셀입니다. 오프라인 망에 보관했다가 나중에 매칭에 씁니다.",1,[[".pair-table .origin-col","원래값"],[".pair-table .token-col","이번 실행의 난수"]]],
+    ["실행마다 다른 난수 · 1회성 키","같은 파일을 다시 돌리면 완전히 다른 난수가 나옵니다. 키를 남기지 않으므로 AI가 패턴을 학습할 수 없습니다.",1,[[".run-table .second","2회차는 전혀 다른 값"]]],
+    ["실행 안의 규칙 · 계산 가능","한 번 돌린 결과 안에서는 같은 고객번호·계좌번호가 같은 난수입니다. 그래서 고객별 건수·합계를 바로 계산할 수 있습니다.",2,[[".same-token","같은 고객 = 같은 난수","each"],[".stat-table","고객별 합계 계산"]]],
+    ["AI_분석자료.md 확인","고객번호·계좌번호는 난수, 종목명은 CAT 코드입니다. 금액·날짜는 그대로입니다. 버튼으로 내려받아 AI에 직접 넣어 볼 수 있습니다.",2,[[".check-list","원문 없음 확인"],[".md-download","내려받아 AI에 넣기"]]],
+    ["AI에는 Markdown만","AI_분석자료.md만 첨부하고, 난수를 바꾸지 말고 JSON으로 답하게 합니다.",2,[[".bubble.user","Markdown만 첨부"]]],
+    ["AI 답변 저장","답변을 그대로 .txt로 저장합니다. JSON 블록이 하나면 설명 문장이 있어도 읽습니다.",3,[[".bubble.ai","이 답변을 파일로 저장"]]],
+    ["AI 결과 매칭","‘AI 결과 매칭’을 누르고 대응 자료와 답변 파일을 고릅니다. 다른 오프라인 PC에서는 대응표 엑셀을 씁니다.",4,[["#app-file","이 버튼"],["#demo-dialog","두 파일 선택"]]],
+    ["원래 고객번호와 연결","난수가 원래 고객번호로, 답변 속 CAT 코드는 원래 종목명으로 바뀐 새 XLSX가 나옵니다.",4,[[".match-result .origin","원래 고객번호"],[".match-result .analysis","종목명 복원"]]],
+    ["완료","AI는 원문도, 다른 실행과 이어 볼 단서도 받지 않았습니다. 결과는 오프라인에서만 원래 고객과 연결됐습니다.",4,[["#app-status","매칭 완료"]]]
+  ];
+  let scene=0;
+  const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+  const isToken=v=>typeof v==="string"&&/^(?:[CAN]|CAT)_[0-9A-F]{16,}$/.test(v);
+  const short=v=>v.slice(0,v.startsWith("CAT_")?12:10)+"…";
+  const shortenText=text=>text.replace(/\b((?:[CAN]|CAT)_[0-9A-F]{6})[0-9A-F]{10,}\b/g,"$1…");
+  $("release-label").textContent="v"+data.release;
+  $("demo-pointer").hidden=true;
+  const stage=$("app-stage"),layer=node("div",undefined,"focus-layer");layer.setAttribute("aria-hidden","true");stage.append(layer);
+  function sheetTable(index,output){
+    const sheet=data.sheets[index],el=node("table"),head=node("thead"),line=node("tr");
+    const picked=new Set(sheet.selected.map(c=>c.index));
+    line.append(node("th","원본 행","row-id"));
+    sheet.letters.forEach((letter,i)=>line.append(node("th",(picked.has(sheet.left+i)?"☑ ":"")+letter,picked.has(sheet.left+i)?"selected pick":"")));
+    head.append(line);el.append(head);const body=node("tbody");
+    (output?sheet.after:sheet.before).forEach(entry=>{
+      const row=node("tr");row.append(node("th",entry.row,"row-id"));
+      entry.cells.forEach(c=>{const v=c.value,token=isToken(v),pick=picked.has(c.column)&&c.span===1;
+        const cell=node("td",token?short(v):typeof v==="number"?v.toLocaleString("ko-KR"):v??"빈칸",[token?"token":"",pick?"pick":""].join(" ").trim());
+        cell.colSpan=c.span;if(!token){cell.style.backgroundColor="#"+c.background;cell.style.color="#"+c.color;}else cell.title=v;row.append(cell);});
+      body.append(row);});
+    el.append(body);return el;
+  }
+  function folder(){
+    const pane=node("div",undefined,"pane"),list=node("ul",undefined,"file-list");
+    pane.append(node("h4","가명처리_AI패키지 폴더 (공유용)"));
+    const notes={"가명처리_원본양식.xlsx":"원래 양식 치환본 · AI 입력 금지","AI_분석자료.md":"AI에 넣는 파일","가명처리_검증보고서.json":"저장 검증 기록","manifest.json":"파일 목록·해시"};
+    data.package_files.forEach(name=>{const li=node("li",undefined,name==="AI_분석자료.md"?"ai":"");li.append(node("span",name),node("small",notes[name]));list.append(li);});
+    const local=node("div",undefined,"local-box");
+    local.append(node("strong","로컬 대응 자료 · 공유 폴더 밖 (%LOCALAPPDATA%\\OfflinePseudonym\\matching)"));
+    [["<작업번호>.opmap","이 PC·계정에서만 열리는 암호화본"],["<작업번호>_대응표.xlsx","원래값·난수 대응표 · 오프라인 망 보관"]].forEach(([n,t])=>{const line=node("div");line.append(node("code",n),document.createTextNode(" · "+t));local.append(line);});
+    pane.append(list,local);return pane;
+  }
+  // Full tokens, exactly the file the program wrote; the preview above only shortens them for reading.
+  function download(){
+    const url=URL.createObjectURL(new Blob([data.markdown],{type:"text/markdown;charset=utf-8"})),link=node("a");
+    link.href=url;link.download="AI_분석자료_시연.md";document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  function markdown(){
+    const box=node("div"),pane=node("div",undefined,"pane"),list=node("ul",undefined,"check-list");
+    const get=node("button","⬇ AI_분석자료.md 내려받기","control primary md-download");get.type="button";get.addEventListener("click",download);
+    const bar=node("div",undefined,"md-actions");bar.append(get,node("span","내려받은 파일을 그대로 AI에 첨부해 볼 수 있습니다 (가상 데이터)"));
+    box.append(bar,node("pre",shortenText(data.markdown).trim(),"md-preview"));
+    [`표 ${data.markdown_tables.length}개 · ${data.markdown_tables.reduce((n,t)=>n+t.rows.length,0)}행`,"고객명·고객번호·계좌번호 원문 0건","종목명 → CAT 코드 "+data.categories+"개 (같은 종목은 같은 코드)","지역 열 · 원본 시트명 제외"].forEach(t=>list.append(node("li",t)));
+    pane.append(list);box.append(pane);return box;
+  }
+  function chat(withReply){
+    const pane=node("div",undefined,"pane chat"),user=node("div",undefined,"bubble user");
+    user.append(node("span","📎 AI_분석자료.md","attach"),node("div","고객별 거래 특징을 분석해 줘. 고객 가명값은 바꾸지 말고 [{\"가명값\",\"분석결과\"}] JSON으로 답해 줘."));
+    pane.append(user);
+    if(withReply){const ai=node("div",undefined,"bubble ai");ai.append(node("strong","AI 답변 (가상 예시)"),node("pre",shortenText(data.reply).trim()));pane.append(ai);}
+    return pane;
+  }
+  function matched(){
+    const pane=node("div",undefined,"pane"),table=node("table",undefined,"match-table match-result"),head=node("tr");
+    ["난수(가명값)","원래 고객번호","분석결과"].forEach(t=>head.append(node("th",t)));table.append(head);
+    data.matched.forEach(([token,,origin,result])=>{const row=node("tr");const t=node("td",short(token),"token");t.title=token;row.append(t,node("td",origin,"origin"),node("td",result,"analysis"));table.append(row);});
+    pane.append(node("h4","AI결과_매칭.xlsx"),table);return pane;
+  }
+  function pairTable(){
+    const pane=node("div",undefined,"pane"),table=node("table",undefined,"match-table pair-table"),head=node("tr");
+    ["유형","원래값","난수(가명값)"].forEach(t=>head.append(node("th",t)));table.append(head);
+    const label={customer:"고객번호",name:"고객명",account:"계좌번호",category:"종목"};
+    data.table_rows.forEach(([kind,raw,token])=>{const row=node("tr");const t=node("td",short(token),"token token-col");t.title=token;row.append(node("td",label[kind]||kind),node("td",raw,"origin-col"),t);table.append(row);});
+    pane.append(node("h4","<작업번호>_대응표.xlsx · 원래값과 난수가 함께 저장"),table);return pane;
+  }
+  function runTable(){
+    const pane=node("div",undefined,"pane"),table=node("table",undefined,"match-table run-table"),head=node("tr");
+    ["원래값","1회차 난수","2회차 난수 (같은 파일 다시 실행)"].forEach(t=>head.append(node("th",t)));table.append(head);
+    data.runs.forEach(r=>{const row=node("tr"),a=node("td",short(r.first),"token"),b=node("td",short(r.second),"token second");a.title=r.first;b.title=r.second;row.append(node("td",r.원래값),a,b);table.append(row);});
+    pane.append(node("h4","같은 파일을 두 번 실행한 실제 결과"),table,node("p","겹치는 값 0개 · 실행마다 새로 뽑는 1회성 키라 이어 볼 단서가 없습니다.","note-line"));return pane;
+  }
+  function ruleView(){
+    const pane=node("div",undefined,"pane"),trades=data.markdown_tables[1],first=data.stats.find(x=>x.count>1);
+    const table=node("table",undefined,"match-table"),head=node("tr");
+    trades.headers.forEach(h=>head.append(node("th",h)));table.append(head);
+    trades.rows.forEach(r=>{const row=node("tr",undefined,r[1]===first.token?"same-token":"");r.forEach((v,i)=>{const c=node("td",/^[CA]_/.test(v)?short(v):i===3?Number(v).toLocaleString("ko-KR"):v,/^[CA]_/.test(v)?"token":"");if(/^[CA]_/.test(v))c.title=v;row.append(c);});table.append(row);});
+    const stat=node("table",undefined,"match-table stat-table"),h2=node("tr");
+    ["난수(고객)","거래 건수","거래금액 합계"].forEach(t=>h2.append(node("th",t)));stat.append(h2);
+    data.stats.forEach(x=>{const row=node("tr"),t=node("td",short(x.token),"token");t.title=x.token;row.append(t,node("td",x.count+"건"),node("td",x.total.toLocaleString("ko-KR")+"원"));stat.append(row);});
+    pane.append(node("h4","AI_분석자료.md · 거래내역 표"),table,node("h4","같은 난수끼리 묶어 계산한 결과","sub-head"),stat);return pane;
+  }
+  function box(selector,label){
+    const found=[...stage.querySelectorAll(selector)].filter(el=>!el.closest("[hidden]")&&el.getClientRects().length);
+    if(!found.length)return;
+    const base=stage.getBoundingClientRect(),rects=found.map(el=>el.getBoundingClientRect());
+    const left=Math.min(...rects.map(r=>r.left))-base.left,top=Math.min(...rects.map(r=>r.top))-base.top;
+    const right=Math.max(...rects.map(r=>r.right))-base.left,bottom=Math.max(...rects.map(r=>r.bottom))-base.top;
+    const pad=4,frame=node("div",undefined,"focus-box"),tag=node("span",label,"focus-tag");if(!label)tag.hidden=true;
+    const x=Math.max(0,left-pad),y=Math.max(0,top-pad),w=Math.min(stage.clientWidth,right+pad)-x,h=Math.min(stage.clientHeight,bottom+pad)-y;
+    Object.assign(frame.style,{left:x+"px",top:y+"px",width:w+"px",height:h+"px"});
+    if(top<28)tag.classList.add("below");frame.append(tag);layer.append(frame);
+  }
+  function mark(){
+    layer.replaceChildren();
+    // "each" boxes every match separately so rows in between are never covered.
+    scenes[scene][3].forEach(([selector,label,mode])=>{
+      if(mode!=="each")return box(selector,label);
+      stage.querySelectorAll(selector).forEach((el,i)=>{el.dataset.focusEach=i;box(`${selector}[data-focus-each="${i}"]`,i?"":label);});
+    });
+  }
+  function render(){
+    const [title,caption,step]=scenes[scene];
+    $("scene-number").textContent=`${String(scene+1).padStart(2,"0")} / ${scenes.length}`;
+    $("scene-title").textContent=title;$("scene-caption").textContent=caption;
+    for(let i=1;i<=4;i++){$("flow-"+i).classList.toggle("active",i===step);$("flow-"+i).classList.toggle("done",i<step);}
+    $("app-filename").textContent=scene?data.filename:"파일을 선택하세요";
+    // The real window keeps "AI 결과 매칭" in the file toolbar, next to file selection.
+    $("app-file").textContent=scene>=11?"AI 결과 매칭":"① 파일 선택";
+    $("app-save").textContent="원본 양식 + AI 자료 저장";
+    const list=$("sheet-checklist");list.replaceChildren();
+    if(scene>=1&&scene<=3)data.sheets.forEach((sheet,i)=>{const on=scene>=2||i===0,line=node("div",undefined,on?"checked":"");line.append(node("span",`${on?"☑":"☐"} ${i+1}. ${sheet.name}`),node("small",on?sheet.selected.map(c=>c.header).join("·"):"원본 유지"));list.append(line);});
+    const view=$("sheet-view");view.replaceChildren();
+    const bar=(name,range)=>{$("sheet-name").textContent=name;$("table-range").textContent=range;};
+    if(scene===0){view.append(node("div","고객정보 · 거래내역 · 잔고","empty-state"));bar("원본 표",data.filename);}
+    else if(scene===1){view.append(sheetTable(0,false));bar("고객정보 · 원본",data.sheets[0].range);}
+    else if(scene===2){view.append(sheetTable(1,false));bar("거래내역 · 원본",data.sheets[1].range);}
+    else if(scene===3){view.append(sheetTable(1,true));bar("거래내역 · 저장 결과",`${data.changed_cells}셀 난수 치환`);}
+    else if(scene===4){view.append(folder());bar("결과 폴더","공유 가능한 파일과 로컬 파일 구분");}
+    else if(scene===5){view.append(pairTable());bar("대응표 엑셀","공유 폴더 밖 · 오프라인 보관");}
+    else if(scene===6){view.append(runTable());bar("1회성 키","실행마다 새 난수");}
+    else if(scene===7){view.append(ruleView());bar("실행 안의 규칙","같은 값 → 같은 난수");}
+    else if(scene===8){view.append(markdown());bar("AI_분석자료.md",`${data.markdown_bytes.toLocaleString("ko-KR")}바이트`);}
+    else if(scene<=11){view.append(chat(scene>=10));bar(scene===9?"AI 대화 · Markdown만 첨부":"AI_답변.txt","가상 AI 답변");}
+    else{view.append(matched());bar("로컬 매칭 결과",`${data.summary.rows}건 연결 · 결과 없는 고객 ${data.summary.missing_customers}명`);}
+    $("app-status").textContent=scene>=12?`AI 결과 ${data.summary.rows}건 로컬 매칭 완료 · 결과 없는 고객 ${data.summary.missing_customers}명`:scene>=4?"AI에는 AI_분석자료.md만 넣습니다":scene>=1?"체크한 열만 이번 실행의 난수로 바꿉니다":"원본은 바뀌지 않습니다.";
+    const dialog=$("demo-dialog");dialog.replaceChildren();dialog.hidden=scene!==11;
+    if(scene===11){dialog.append(node("h3","AI 결과 매칭"),node("div","① 대응 자료 · <작업번호>.opmap 또는 _대응표.xlsx","dialog-file"),node("div","② AI 답변 · AI_답변.txt","dialog-file"),node("p","③ 새 결과 · AI결과_매칭.xlsx"));const a=node("div",undefined,"dialog-actions");a.append(node("span","연결","confirm"));dialog.append(a);}
+    $("step-prev").disabled=scene===0;$("step-next").disabled=scene===scenes.length-1;
+    $("step-dots").querySelectorAll("button").forEach((b,i)=>{b.classList.toggle("active",i===scene);b.setAttribute("aria-current",i===scene?"step":"false");});
+    mark();
+  }
+  const go=index=>{const next=Math.max(0,Math.min(scenes.length-1,index));if(next!==scene){scene=next;render();}};
+  scenes.forEach((s,i)=>{const b=node("button",undefined,"dot");b.type="button";b.title=`${i+1}. ${s[0]}`;b.setAttribute("aria-label",`${i+1}단계 · ${s[0]}`);b.addEventListener("click",()=>go(i));$("step-dots").append(b);});
+  $("md-download-side").addEventListener("click",download);
+  $("step-prev").addEventListener("click",()=>go(scene-1));
+  $("step-next").addEventListener("click",()=>go(scene+1));
+  document.addEventListener("keydown",event=>{
+    if(event.altKey||event.ctrlKey||event.metaKey||/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName))return;
+    const key=event.key;
+    if(key==="ArrowRight"||key==="PageDown"||key===" "||key==="Enter"){if(key===" "||key==="Enter"){if(event.target.tagName==="BUTTON")return;}event.preventDefault();go(scene+1);}
+    else if(key==="ArrowLeft"||key==="PageUp"){event.preventDefault();go(scene-1);}
+    else if(key==="Home"){event.preventDefault();go(0);}
+    else if(key==="End"){event.preventDefault();go(scenes.length-1);}
+  });
+  window.addEventListener("resize",mark);
+  render();
+})();
+</script>
+</body>
+</html>
